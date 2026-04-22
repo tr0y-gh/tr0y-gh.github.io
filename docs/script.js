@@ -1,7 +1,7 @@
 const $ = selector => document.querySelector(selector)
 const storage = window.localStorage
 
-let DEBUG, lang, theme, email, phone
+let DEBUG, lang, theme, email, phone, git
 function log (...msg) {
   if (!DEBUG) return
   console.log(...msg)
@@ -194,7 +194,7 @@ function render () {
   $('title').innerHTML = `Troy - CV - ${$('#language').value}`
   // Inject url params
   $('#info').innerHTML = data.settings.info[lang].replace(
-    '#LINK#', `<a href="https://github.io/xxx?email=${email}&phone=${phone}">GitHub</a>`
+    '#LINK#', `<a href="https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}">GitHub</a>`
   ) 
   $('#print').innerHTML = data.settings.print[lang]
 
@@ -222,6 +222,7 @@ function init () {
   log('params', params)
   email = params.get('email')
   phone = params.get('phone')
+  git = params.get('git')
 
   if (email) {
     $('#email').innerHTML = email
@@ -232,6 +233,11 @@ function init () {
     $('#phone').innerHTML = phone
     $('#phone').setAttribute('href', `tel:${phone.replaceAll(' ', '')}`)
     log('#phone', $('#phone').attributes)
+  }
+  if (git) {
+    $('#git').innerHTML = git
+    $('#git').setAttribute('href', `https://${git}`)
+    log('#git', $('#git').attributes)
   }
 
   render()
