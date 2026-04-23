@@ -1,12 +1,3 @@
-const $ = selector => document.querySelector(selector)
-const storage = window.localStorage
-
-let DEBUG, lang, theme, email, phone, git
-function log (...msg) {
-  if (!DEBUG) return
-  console.log(...msg)
-}
-
 const data = {
   settings: {
     info: {
@@ -35,6 +26,7 @@ const data = {
   },
   skills: {
     title: { en: 'Skills', se: 'Kunskaper' },
+    headings: { languages: { en: 'Languages', se: 'Språk', }, },
     content: { en: [], se: [], },
   },
   experience: {
@@ -59,20 +51,6 @@ const data = {
         stack: [ 'Docker', 'Node.js', 'Svelte', 'PostgreSQL', 'SQLite' ],
       },
       {
-        company: 'Silicon Wizard',
-        title: { en: 'Founder', se: 'Grundare', },
-        period: '2020',
-        description: {
-          en: [
-            `Silicon Wizard is my consulting company that I've used for billing clients and as a holding company for my startup attempts.`,
-          ],
-          se: [
-            `Silicon Wizard är mitt konsultbolag som jag har använt för att fakturera för uppdrag och som moderbolag för mina startup försök.`,
-          ],
-        },
-        stack: [ 'Docker', 'Node.js', 'TypeScript', 'Python', 'PostgreSQL', 'SQLite' ],
-      },
-      {
         company: 'Klimato',
         title: { en: 'Lead Developer', se: 'Lead Utvecklare', },
         period: '2020',
@@ -87,6 +65,20 @@ const data = {
           ],
         },
         stack: [ 'Docker', 'Node.js', 'Vue.js', 'React Native', 'MongoDB', 'PostgreSQL', 'SQLite', 'Redis' ],
+      },
+      {
+        company: 'Silicon Wizard',
+        title: { en: 'Founder', se: 'Grundare', },
+        period: '2020',
+        description: {
+          en: [
+            `Silicon Wizard is my consulting company that I've used for billing clients and as a holding company for my startup attempts.`,
+          ],
+          se: [
+            `Silicon Wizard är mitt konsultbolag som jag har använt för att fakturera för uppdrag och som moderbolag för mina startup försök.`,
+          ],
+        },
+        stack: [ 'Docker', 'Node.js', 'TypeScript', 'Python', 'PostgreSQL', 'SQLite' ],
       },
       {
         company: 'Enklare',
@@ -136,6 +128,15 @@ const data = {
   },
 }
 
+const $ = selector => document.querySelector(selector)
+const storage = window.localStorage
+
+let DEBUG, lang, theme, email, phone, git
+function log (...msg) {
+  if (!DEBUG) return
+  console.log(...msg)
+}
+
 function Profile () {
   $('#profile .subheading').innerHTML = data.profile.title[lang]
 }
@@ -145,18 +146,17 @@ function About () {
 }
 function Skills () {
   $('#skills .title').innerHTML = data.skills.title[lang]
+  $('#skills #languages').innerHTML = data.skills.headings.languages[lang]
 }
 
 function Job (job) {
   return `
-    <div class="job">
-      <div class="job-header">
-        <div class="period">${job.period}</div>
-        <h2>${job.company}, <span class="subheading">${job.title[lang]}</span></h2>
-      </div>
-      <div class="job-content">
+    <div class="position">
+      <div class="year">${job.period}</div>
+      <h3>${job.company}, <span class="subheading">${job.title[lang]}</span></h3>
+      <div class="position-content">
         ${job.description[lang].map(p => `<p>${p}</p>`).join('')}
-        <ul class="stack">
+        <ul class="tech-stack unstyled flex flex-wrap">
           ${job.stack.map(li => `<li>${li}</li>`).join('')}
         </ul>
       </div>
@@ -195,7 +195,7 @@ function render () {
   // Inject url params
   $('#info').innerHTML = data.settings.info[lang].replace(
     '#LINK#', `<a href="https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}">GitHub</a>`
-  ) 
+  )
   $('#print').innerHTML = data.settings.print[lang]
 
   Profile()
