@@ -16,13 +16,13 @@ const t = {
         `My name is Troy and I'm a <b>Full Stack Developer</b> based in <b>Stockholm, Sweden</b>. I started programming 20 years ago and I've worked in the business for 10.`,
         `Being self-taught I've had to learn all areas of an application from devops, architecture and security to design and UX. I'm autonomous and take responsibility for the work I do. It's important to me that my code is readable, testable and maintainable.`,
         `I'm a quick learner and I like to challenge myself. I try to learn from first principles rather than focusing on specific frameworks to really understand a domain.`,
-        `My native language is swedish, I'm fluent in english and I'm comfortable in turkish and french. I consider myself a good communicator and can adapt my language to the audience. I'm very interested in security, integrity and open-source and all my computers and servers run Linux or *BSD since 2015. I self-host some services and have experience on bare-metal and most cloud platforms.`,
+        `My native language is swedish, I'm fluent in english and I'm comfortable in turkish and french. I consider myself a good communicator and can adapt my language to the audience. I'm very interested in <b>security, integrity and open-source</b> and all my computers and servers run <b>Linux or *BSD since 2015</b>. I self-host some services and have experience on bare-metal and most cloud platforms.`,
       ],
       se: [
         `Jag heter Troy och är en <b>Full Stack Utvecklare</b> som bor i <b>Stockholm</b>. Jag började programmera för över 20 år sedan och har jobbat i branschen i 10.`,
         `Som självlärd har jag behövt lära mig alla delar av en applikation från devops, arkitektur och säkerhet till design och UX. Jag är självgående och tar ansvar för jobbet jag genomför. Det är viktigt för mig att min kod är läsbar, testbar och lätt att underhålla.`,
         `Jag lär mig snabbt och gillar att utmana mig själv. Jag försöker lära mig grundprinciper snarare än enskilda ramverk för att verkligen förstå en domän.`,
-        `Mitt modersmål är svenska, jag pratar flytade engelska och jag är bekväm i turkiska och franska. Jag tycker själv att jag är bra på att kommunicera och kan anpassa språket efter mottagaren. Jag har ett stort intresse för säkerhet, integritet och öppen källkod och alla mina datorer och servrar är Linux eller *BSD sedan 2015. Jag self-hostar en del tjänster och har erfarenhet både på hårdvara och de flesta cloudmiljöerna.`,
+        `Mitt modersmål är svenska, jag pratar flytade engelska och jag är bekväm i turkiska och franska. Jag tycker själv att jag är bra på att kommunicera och kan anpassa språket efter mottagaren. Jag har ett stort intresse för <b>säkerhet, integritet och öppen källkod</b> och alla mina datorer och servrar är <b>Linux eller *BSD sedan 2015</b>. Jag self-hostar en del tjänster och har erfarenhet både på hårdvara och de flesta cloudmiljöerna.`,
       ],
     },
   },
@@ -88,10 +88,10 @@ const t = {
         period: '2018',
         description: {
           en: [
-            'Enklare is a fin-tech company providing price comparisons for credit, insurance and power. One of the projects I did while there was implementing the <b>BankID integration</b> and migrated the developmenet environments to containers. I also had ownership of all the frontends.',
+            'Enklare is a fin-tech company providing price comparisons for credit, insurance and power. While there I implemented the <b>BankID integration</b> and migrated the developmenet environments to containers. I also had ownership of all the frontends.',
           ],
           se: [
-            'Enklare är ett fin-tech bolag som erbjuder prisjämförelser för lån, försäkring och el. Där implementerade jag bland annat <b>BankID integrationen</b> och migrerade utvecklingsmiljöerna till containers. Jag ansvarade även för alla frontends.',
+            'Enklare är ett fin-tech bolag som erbjuder prisjämförelser för lån, försäkring och el. Där implementerade <b>BankID integrationen</b> och migrerade utvecklingsmiljöerna till containers. Jag ansvarade även för alla frontends.',
           ],
         },
         stack: [ 'Docker', 'Node.js', 'BankID', 'Vue.js', 'Wordpress', 'Laravel', 'Redis' ],
@@ -102,10 +102,10 @@ const t = {
         period: '2017',
         description: {
           en: [
-            'Ispy is a consulting/web agency with a wide range of clients in different sectors.',
+            'Ispy is a consulting/web agency with a wide range of clients in different sectors. We worked in many projects and environments from legacy PHP maintainance to more modern Node.js and React. One of the more exciting was a crowdfunding platform for charity.',
           ],
           se: [
-            'Ispy är en konsult-/webbyrå med många olika kunder inom flera branscher.',
+            'Ispy är en konsult-/webbyrå med många olika kunder inom flera branscher. Vi jobbade i många projekt och miljöer från underhåll av gammal PHP till mer moderna Node.js och React. Ett av de mer spännande var en crowdfunding plattform för välgörenhetsproject.',
           ],
         },
         stack: [ 'Docker', 'Node.js', 'React', 'Wordpress', 'MySQL', 'MongoDB', 'Redis', 'Electron' ],
@@ -124,7 +124,7 @@ const t = {
             'En lösning jag fortfarande är väldigt stolt över var att använda adblocks blocklistor för att filtrera annonser när vi skrapade bilder. Ironin att ett annonsföretag använder adblock går inte att missa.',
           ],
         },
-        stack: [ 'Node.js', 'React', 'Vue.js', 'Redis' ],
+        stack: [ 'Node.js', 'React', 'Vue.js', 'Python', 'Redis' ],
       },
     ],
   },
