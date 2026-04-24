@@ -3,8 +3,8 @@ const t = {
   lang: { en:'English', se: 'Svenska' },
   toolbar: {
     info: {
-      en: 'Visit #LINK# for more languages and a printer friendly PDF.',
-      se: 'Besök #LINK# för fler språk och en skrivarvänlig PDF.',
+      en: 'Click <a href="%s">here</a> for more languages and a printer friendly PDF.',
+      se: 'Klicka <a href="%s">här</a> för fler språk och en skrivarvänlig PDF.',
     },
     print: { en: 'Print / Save as PDF', se: 'Skriv ut / Spara som PDF' },
   },
@@ -135,6 +135,9 @@ const storage = window.localStorage
 function capitalize (str) {
   return str[0].toUpperCase() + str.slice(1)
 }
+function format(str, ...args) {
+  return str.replace(/%s/g, () => args.shift())
+}
 
 let DEBUG, lang, theme, email, phone, git
 function log (...msg) {
@@ -198,9 +201,8 @@ function render () {
 
   $('title').innerHTML = `Troy - ${capitalize(t.resume[lang])} - ${t.lang[lang]}`
   // Inject url params
-  $('#info').innerHTML = t.toolbar.info[lang].replace(
-    '#LINK#', `<a href="https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}">GitHub</a>`,
-  )
+  const url = `https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}`
+  $('#info').innerHTML = format(t.toolbar.info[lang], url)
   $('#print').innerHTML = t.toolbar.print[lang]
 
   Profile()
