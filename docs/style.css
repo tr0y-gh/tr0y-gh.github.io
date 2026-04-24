@@ -104,7 +104,8 @@ button, select {
   color: var(--bg-normal);
 }
 
-#settings {
+#toolbar {
+  z-index: 1;
   position: sticky;
   top: 0;
   padding: .5rem 0;

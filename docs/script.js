@@ -1,7 +1,7 @@
 const t = {
   resume: { en:'resume', se: 'CV' },
   lang: { en:'English', se: 'Svenska' },
-  settings: {
+  toolbar: {
     info: {
       en: 'Visit #LINK# for more languages and a printer friendly PDF.',
       se: 'Besök #LINK# för fler språk och en skrivarvänlig PDF.',
@@ -198,10 +198,10 @@ function render () {
 
   $('title').innerHTML = `Troy - ${capitalize(t.resume[lang])} - ${t.lang[lang]}`
   // Inject url params
-  $('#info').innerHTML = t.settings.info[lang].replace(
+  $('#info').innerHTML = t.toolbar.info[lang].replace(
     '#LINK#', `<a href="https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}">GitHub</a>`,
   )
-  $('#print').innerHTML = t.settings.print[lang]
+  $('#print').innerHTML = t.toolbar.print[lang]
 
   Profile()
   About()
