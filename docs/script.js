@@ -1,4 +1,6 @@
-const data = {
+const t = {
+  resume: { en:'resume', se: 'CV' },
+  lang: { en:'English', se: 'Svenska' },
   settings: {
     info: {
       en: 'Visit #LINK# for more languages and a printer friendly PDF.',
@@ -6,7 +8,7 @@ const data = {
     },
     print: { en: 'Print / Save as PDF', se: 'Skriv ut / Spara som PDF' },
   },
-  profile: { title: { en: 'Full Stack Developer', se: 'Full Stack Utvecklare', }, },
+  profile: { title: { en: 'Full Stack Developer', se: 'Full Stack Utvecklare' } },
   about: {
     title: { en: 'About', se: 'Om mig' },
     content:{
@@ -26,7 +28,7 @@ const data = {
   },
   skills: {
     title: { en: 'Skills', se: 'Kunskaper' },
-    headings: { languages: { en: 'Languages', se: 'Språk', }, },
+    headings: { languages: { en: 'Languages', se: 'Språk' } },
     content: { en: [], se: [], },
   },
   experience: {
@@ -34,7 +36,7 @@ const data = {
     content: [
       {
         company: 'NoMoonShot',
-        title: { en: 'Co-Founder & CTO', se: 'Medgrundare & CTO', },
+        title: { en: 'Co-Founder & CTO', se: 'Medgrundare & CTO' },
         period: '2021',
         description: {
           en: [
@@ -52,7 +54,7 @@ const data = {
       },
       {
         company: 'Klimato',
-        title: { en: 'Lead Developer', se: 'Lead Utvecklare', },
+        title: { en: 'Lead Developer', se: 'Lead Utvecklare' },
         period: '2020',
         description: {
           en: [
@@ -68,7 +70,7 @@ const data = {
       },
       {
         company: 'Silicon Wizard',
-        title: { en: 'Founder', se: 'Grundare', },
+        title: { en: 'Founder', se: 'Grundare' },
         period: '2020',
         description: {
           en: [
@@ -82,7 +84,7 @@ const data = {
       },
       {
         company: 'Enklare',
-        title:{ en: 'Full Stack Developer', se: 'Full Stack Utvecklare', },
+        title:{ en: 'Full Stack Developer', se: 'Full Stack Utvecklare' },
         period: '2018',
         description: {
           en: [
@@ -96,7 +98,7 @@ const data = {
       },
       {
         company: 'Ispy',
-        title:{ en: 'Full Stack Developer', se: 'Full Stack Utvecklare', },
+        title:{ en: 'Full Stack Developer', se: 'Full Stack Utvecklare' },
         period: '2017',
         description: {
           en: [
@@ -110,7 +112,7 @@ const data = {
       },
       {
         company: 'Znaptag',
-        title:{ en: 'Full Stack Developer', se: 'Full Stack Utvecklare', },
+        title:{ en: 'Full Stack Developer', se: 'Full Stack Utvecklare' },
         period: '2015',
         description: {
           en: [
@@ -130,6 +132,9 @@ const data = {
 
 const $ = selector => document.querySelector(selector)
 const storage = window.localStorage
+function capitalize (str) {
+  return str[0].toUpperCase() + str.slice(1)
+}
 
 let DEBUG, lang, theme, email, phone, git
 function log (...msg) {
@@ -138,15 +143,15 @@ function log (...msg) {
 }
 
 function Profile () {
-  $('#profile .subheading').innerHTML = data.profile.title[lang]
+  $('#profile .subheading').innerHTML = t.profile.title[lang]
 }
 function About () {
-  $('#about .title').innerHTML = data.about.title[lang]
-  $('#about .content').innerHTML = data.about.content[lang].map(p => `<p>${p}</p>`).join('')
+  $('#about .title').innerHTML = t.about.title[lang]
+  $('#about .content').innerHTML = t.about.content[lang].map(p => `<p>${p}</p>`).join('')
 }
 function Skills () {
-  $('#skills .title').innerHTML = data.skills.title[lang]
-  $('#skills #languages').innerHTML = data.skills.headings.languages[lang]
+  $('#skills .title').innerHTML = t.skills.title[lang]
+  $('#skills #languages').innerHTML = t.skills.headings.languages[lang]
 }
 
 function Job (job) {
@@ -165,8 +170,8 @@ function Job (job) {
 }
 
 function Experience () {
-  $('#experience .title').innerHTML = data.experience.title[lang]
-  $('#experience .content').innerHTML = data.experience.content.map(Job).join('')
+  $('#experience .title').innerHTML = t.experience.title[lang]
+  $('#experience .content').innerHTML = t.experience.content.map(Job).join('')
 }
 
 function updateLanguage () {
@@ -191,12 +196,12 @@ function render () {
   if (theme === 'dark') $('body').classList.remove('theme-light')
   if (theme === 'light') $('body').classList.add('theme-light')
 
-  $('title').innerHTML = `Troy - CV - ${$('#language').value}`
+  $('title').innerHTML = `Troy - ${capitalize(t.resume[lang])} - ${t.lang[lang]}`
   // Inject url params
-  $('#info').innerHTML = data.settings.info[lang].replace(
-    '#LINK#', `<a href="https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}">GitHub</a>`
+  $('#info').innerHTML = t.settings.info[lang].replace(
+    '#LINK#', `<a href="https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}">GitHub</a>`,
   )
-  $('#print').innerHTML = data.settings.print[lang]
+  $('#print').innerHTML = t.settings.print[lang]
 
   Profile()
   About()
