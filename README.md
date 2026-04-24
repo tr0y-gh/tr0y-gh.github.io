@@ -4,6 +4,7 @@ This project is my resume and is hosted on [tr0y-gh.github.io](https://tr0y-gh.g
 
 ```
 docs/
+├── favicon.svg
 ├── index.html
 ├── script.js
 └── style.css
