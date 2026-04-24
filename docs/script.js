@@ -6,6 +6,10 @@ const t = {
       en: 'Click <a href="%s">here</a> for more languages and a printer friendly PDF.',
       se: 'Klicka <a href="%s">här</a> för fler språk och en skrivarvänlig PDF.',
     },
+    theme: {
+      dark: { en: 'Dark', se: 'Mörkt' },
+      light: { en: 'Light', se: 'Ljust' },
+    },
     print: { en: 'Print / Save as PDF', se: 'Skriv ut / Spara som PDF' },
   },
   profile: { title: { en: 'Full Stack Developer', se: 'Full Stack Utvecklare' } },
@@ -198,6 +202,11 @@ function render () {
 
   if (theme === 'dark') $('body').classList.remove('theme-light')
   if (theme === 'light') $('body').classList.add('theme-light')
+  $('#theme').innerHTML = `
+    <option value="dark">${t.toolbar.theme.dark[lang]}</option>
+    <option value="light">${t.toolbar.theme.light[lang]}</option>
+  `
+  $('#theme').value = theme
 
   $('title').innerHTML = `Troy - ${capitalize(t.resume[lang])} - ${t.lang[lang]}`
   // Inject url params
