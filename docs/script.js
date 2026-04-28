@@ -143,7 +143,9 @@ function format(str, ...args) {
   return str.replace(/%s/g, () => args.shift())
 }
 
-let DEBUG, lang, theme, email, phone, git
+let DEBUG, lang, theme,
+    email, phone, git, npm
+
 function log (...msg) {
   if (!DEBUG) return
   console.log(...msg)
@@ -210,7 +212,7 @@ function render () {
 
   $('title').innerHTML = `Troy - ${capitalize(t.resume[lang])} - ${t.lang[lang]}`
   // Inject url params
-  const url = `https://tr0y-gh.github.io/?email=${email}&phone=${phone}&git=${git}`
+  const url = `https://tr0y-gh.github.io/${window.location.search}`
   $('#info').innerHTML = format(t.toolbar.info[lang], url)
   $('#print').innerHTML = t.toolbar.print[lang]
 
@@ -236,24 +238,33 @@ function init () {
   $('#theme').value = theme
 
   log('params', params)
-  email = params.get('email')
-  phone = params.get('phone')
-  git = params.get('git')
 
+  email = params.get('email')
   if (email) {
     $('#email').innerHTML = email
     $('#email').setAttribute('href', `mailto:${email}`)
     log('#email', $('#email').attributes)
   }
+
+  phone = params.get('phone')
   if (phone) {
     $('#phone').innerHTML = phone
     $('#phone').setAttribute('href', `tel:${phone.replaceAll(' ', '')}`)
     log('#phone', $('#phone').attributes)
   }
+
+  git = params.get('git')
   if (git) {
     $('#git').innerHTML = git
     $('#git').setAttribute('href', `https://${git}`)
     log('#git', $('#git').attributes)
+  }
+
+  npm = params.get('npm')
+  if (npm) {
+    $('#npm').innerHTML = npm
+    $('#npm').setAttribute('href', `https://${npm}`)
+    log('#npm', $('#npm').attributes)
   }
 
   render()
