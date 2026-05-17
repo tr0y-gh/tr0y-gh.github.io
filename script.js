@@ -3,7 +3,6 @@ import Home from './src/Home.js'
 import About from './src/About.js'
 import NotFound from './src/NotFound.js'
 
-
 const $ = (...selectors) => document.querySelector(...selectors)
 const $$ = (...selectors) => document.querySelectorAll(...selectors)
 
@@ -25,6 +24,7 @@ function update () {
 
   $('#main').innerHTML = route.render()
 }
+
 function updateLanguage (e) {
   // TODO
   // - translate #skip-link
@@ -43,17 +43,24 @@ function navigate (e) {
   update()
 }
 
-const links = $$('a[href]')
-for (let link of links) {
-  const href = link.getAttribute('href')
-  if (href.startsWith('/')) {
-    // only nagivate on internal links
-    link.addEventListener('click', navigate)
+
+function init () {
+  // i18n
+  const lang = window.localStorage.getItem('lang') || t.lang
+  t.lang = lang
+  $('#lang').value = t.lang
+  $('#lang').onchange = updateLanguage
+
+  // router
+  const links = $$('a[href]')
+  for (let link of links) {
+    const href = link.getAttribute('href')
+    if (href.startsWith('/')) {
+      // only nagivate on internal links
+      link.addEventListener('click', navigate)
+    }
   }
+  window.onpopstate = update
+  window.onload = update
 }
-
-t.lang = window.localStorage.getItem('lang') || t.lang
-$('#lang').onchange = updateLanguage
-
-window.onpopstate = update
-window.onload = update
+init()
