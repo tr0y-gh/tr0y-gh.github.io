@@ -12,6 +12,17 @@ export default {
       ], 
     },
   }, 
+  About: {
+    title: { en: 'About', se: 'Om' },
+    content: {
+      en: [
+        'Nothing here yet...',
+      ],
+      se: [
+        'Inget här ännu...',
+      ],
+    },
+  },
   Styleguide: {
     title: { en: 'Styleguide', se: 'Stilguide' },
     content: {
